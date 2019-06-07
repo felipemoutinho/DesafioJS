@@ -2,16 +2,16 @@ const case1 = "{[()]}";
 const case2 = "{[(])}";
 const case3 = "{{[[(())]]}}";
 
-function lerDadosEntrada(dados){
+function validaBrackets(brackets){
     let pilhaDados = [];
     
-    for (let i = 0; i < dados.split('').length ; i++) {
-        if(dados[i] == '{' || dados[i] == '[' || dados[i] == '(') pilhaDados.push(dados[i]);
-        else if(dados[i] == '}' || dados[i] == ']' || dados[i] == ')'){
+    for (let i = 0; i < brackets.split('').length ; i++) {
+        if(brackets[i] == '{' || brackets[i] == '[' || brackets[i] == '(') pilhaDados.push(brackets[i]);
+        else if(brackets[i] == '}' || brackets[i] == ']' || brackets[i] == ')'){
             // console.log(pilhaDados)
             // console.log(retornaTopo(pilhaDados));
-            // console.log(retornaPar(dados[i]));
-            if((pilhaDados.length == 0) || (retornaTopo(pilhaDados) != retornaPar(dados[i]))){
+            // console.log(retornaPar(brackets[i]));
+            if((pilhaDados.length == 0) || (retornaTopo(pilhaDados) != retornaPar(brackets[i]))){
                 return "NÃO";
             }
             else pilhaDados.pop();
@@ -31,4 +31,6 @@ function retornaPar(info){
     else return '{';
 }
 
-console.log(lerDadosEntrada(case3));
+console.log(validaBrackets(case3));
+console.log(validaBrackets(case2));
+console.log(validaBrackets(case1));
